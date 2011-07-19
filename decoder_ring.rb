@@ -36,7 +36,7 @@ class DecoderRing < Sinatra::Base
       "Content-Disposition" => "attachment; filename=#{file[:filename]}",
       "Content-Type" => file[:type]
     }
-    contents = Iconv.iconv("UTF-8","LATIN1",file[:tempfile].read)
+    contents = `iconv -f #{from} -t #{to} #{file[:tempfile].path}`
     [200, headers, contents]
   end
 end
