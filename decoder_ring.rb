@@ -23,6 +23,14 @@ class DecoderRing < Sinatra::Base
     file_from(params[:file], 'UTF-8', 'LATIN1')
   end
 
+  get '/greek' do
+    erb :greek, :locals => {:title => "It's all greek to me!"}
+  end
+
+  post '/greek' do
+    file_from(params[:file], 'ISO-8859-7', 'UTF-8')
+  end
+
   def file_from(file, from, to)
     headers = {
       "Content-Disposition" => "attachment; filename=#{file[:filename]}",
