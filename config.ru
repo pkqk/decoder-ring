@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'bundler/setup'
-require 'encoder_ring'
+require 'decoder_ring'
 
 use Rack::Static, :urls => %w[/images], :root => "public"
-run EncoderRing.new
+run DecoderRing.new

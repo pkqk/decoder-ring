@@ -2,13 +2,13 @@ require 'sinatra/base'
 require 'erb'
 require 'iconv'
 
-class EncoderRing < Sinatra::Base
+class DecoderRing < Sinatra::Base
   get '/' do
-    erb :index
+    erb :index, :locals => {:title => "Change File Encodings"}
   end
 
   get '/fix' do
-    erb :fix
+    erb :fix, :locals => {:title => "Fix encoding to UTF-8"}
   end
 
   post '/fix' do
@@ -16,7 +16,7 @@ class EncoderRing < Sinatra::Base
   end
 
   get '/bork' do
-    erb :bork
+    erb :bork, :locals => {:title => "Change encoding to Latin1"}
   end
 
   post '/bork' do
